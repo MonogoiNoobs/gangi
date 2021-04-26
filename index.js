@@ -12,7 +12,7 @@ const yjsnpiImg = new Image();
 yjsnpiImg.src = `./img/${yjsnpiFrame.next().value}.png`;
 
 const commentWrapper = document.createElement("div");
-commentWrapper.classList.add("comment");
+commentWrapper.classList.add("commentyjsnpi");
 const comment = document.createElement("p");
 commentWrapper.append(comment);
 
