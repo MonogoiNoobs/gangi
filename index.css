@@ -33,4 +33,5 @@ video {
   left: 0;
   font-weight: bold;
   font-size: 2rem;
+  text-shadow: 0 0 .5rem #000;
 }
