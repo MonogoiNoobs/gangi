@@ -39,10 +39,9 @@ const main = () => {
     event.preventDefault();
     new Audio("./conan.opus").play();
     yjsnpiImg.src = `./img/${yjsnpiFrame.next().value}.png`;
-    if (1 - Math.random() < 0.4) {
-      const self = document.body.appendChild(generateComment());
-      window.setTimeout(() => self.remove(), 3000);
-    }
+    if (1 - Math.random() > 0.4) return;
+    const self = document.body.appendChild(generateComment());
+    window.setTimeout(() => self.remove(), 3000);
   }, false);
 };
 
