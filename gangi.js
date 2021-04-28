@@ -12,7 +12,6 @@ export class Gangi {
 
     this.img = document.createElement("img");
     this.img.src = `./img/${this.frame.next().value}.png`;
-    console.log(this.img)
 
     this.commentWrapper = document.createElement(commentWrapperElement);
     this.commentWrapper.classList.add(commentClass);
