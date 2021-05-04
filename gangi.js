@@ -1,4 +1,8 @@
 export class Gangi {
+  #commentWrapper
+  #comment
+  #img
+
   constructor({
     commentWrapperElement,
     commentElement,
@@ -10,14 +14,14 @@ export class Gangi {
     }) {
     this.frame = this.count();
 
-    this.img = document.createElement("img");
-    this.img.src = `./img/${this.frame.next().value}.png`;
+    this.#img = document.createElement("img");
+    this.#img.src = `./img/${this.frame.next().value}.png`;
 
-    this.commentWrapper = document.createElement(commentWrapperElement);
-    this.commentWrapper.classList.add(commentClass);
+    this.#commentWrapper = document.createElement(commentWrapperElement);
+    this.#commentWrapper.classList.add(commentClass);
 
-    this.comment = document.createElement(commentElement);
-    this.commentWrapper.append(this.comment);
+    this.#comment = document.createElement(commentElement);
+    this.#commentWrapper.append(this.#comment);
   }
 
   *count() {
@@ -29,11 +33,11 @@ export class Gangi {
     }
   }
 
-  getComment() {
+  #getComment() {
     const random = Math.random() * 3 | 0;
     const size = [2, 4, 6];
     const top = [59, 57, 55];
-    const element = this.commentWrapper.cloneNode(true);
+    const element = this.#commentWrapper.cloneNode(true);
 
     element.firstChild.textContent = (["!", "！"][Math.random() * 2 | 0]).repeat(Math.random() * 36 + 1 | 0);
     element.firstChild.style.cssText = `
@@ -45,26 +49,26 @@ export class Gangi {
     return element;
   }
 
-  keydownEvent(event) {
+  #keydownEvent(event) {
     event.preventDefault();
-    this.img.src = `./img/${this.frame.next().value}.png`;
+    this.#img.src = `./img/${this.frame.next().value}.png`;
 
     new Audio("./conan.opus").play();
 
     if (1 - Math.random() > 0.4) return;
 
-    const self = document.body.appendChild(this.getComment());
+    const self = document.body.appendChild(this.#getComment());
     window.setTimeout(() => self.remove(), 3000);
   }
 
-  main() {
-    document.body.append(this.img);
+  #main() {
+    document.body.append(this.#img);
 
-    document.addEventListener("keydown", this.keydownEvent.bind(this), false);
+    document.addEventListener("keydown", this.#keydownEvent.bind(this), false);
   }
 
   apply() {
-    const main = this.main.bind(this);
+    const main = this.#main.bind(this);
 
     if (document.readyState === "loading")
       document.addEventListener("DOMContentLoaded", main, false);
