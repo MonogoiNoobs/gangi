@@ -2,6 +2,7 @@ export class Gangi {
   #commentWrapper
   #comment
   #img
+  #frame
 
   constructor({
     commentWrapperElement,
@@ -12,10 +13,10 @@ export class Gangi {
       commentElement: "p",
       commentClass: "commentyjsnpi",
     }) {
-    this.frame = this.count();
+    this.#frame = this.#count();
 
     this.#img = document.createElement("img");
-    this.#img.src = `./img/${this.frame.next().value}.png`;
+    this.#img.src = `./img/${this.#frame.next().value}.png`;
 
     this.#commentWrapper = document.createElement(commentWrapperElement);
     this.#commentWrapper.classList.add(commentClass);
@@ -24,7 +25,7 @@ export class Gangi {
     this.#commentWrapper.append(this.#comment);
   }
 
-  *count() {
+  *#count() {
     for (; ;) {
       yield 0;
       yield 1;
